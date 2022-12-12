@@ -11,7 +11,6 @@ import jakarta.inject.Inject;
 import java.util.*;
 import java.util.stream.Collectors;
 
-
 @Controller("/sale")
 public class SaleController {
     @Inject
@@ -76,9 +75,9 @@ public class SaleController {
         List<Daily_Sales> daily_sales = mapper.getMapper().scan(Daily_Sales.class).stream()
                 .filter(x -> x.getSaleDate().equals(saleDate)).collect(Collectors.toList());
 
-        List<List<Product_Details>> s = new ArrayList<>();
-        daily_sales.stream().forEach(i -> s.add(i.getProducts()));
-        return s;
+        List<List<Product_Details>> product_details = new ArrayList<>();
+        daily_sales.stream().forEach(i -> product_details.add(i.getProducts()));
+        return product_details;
     }
 }
 
